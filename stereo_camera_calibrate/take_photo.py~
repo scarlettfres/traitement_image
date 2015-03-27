@@ -1,0 +1,54 @@
+import cv2
+import numpy as np
+import time
+# create video capture
+cap_right = cv2.VideoCapture(0)
+cap_left = cv2.VideoCapture(1) 
+print type(cap_left)
+print type(cap_right)
+nbr=0
+nbr=0
+i=0
+print "wait ..."
+time.sleep(5)
+print "GO!"
+while(1):
+
+	# read the frames
+	_,frame_right = cap_right.read()
+	_,frame_left = cap_left.read()
+
+	time.sleep(.100)
+	i += 1 
+	print i
+	print "frame_right = ",len(frame_right),"frame_right[0] = ",len(frame_right[0])
+	if i==10:
+		print "=======>11111111111111111<=========="
+
+	if i==20:
+		print "=======>22222222222222222<=========="
+		
+
+	if i==30:
+		print "=======>33333333333333333<=========="
+		r=titre_right ="imagenes/right"+str(nbr)+".ppm"
+		l=titre_left ="imagenes/left"+str(nbr)+".ppm"
+		print "                     !!",   nbr    ,"!!              "
+		cv2.imwrite(titre_right,frame_right)
+		cv2.imwrite(titre_left,frame_left)
+		nbr += 1
+		i=0
+
+	cv2.imshow('frame_right',frame_right)
+	cv2.imshow('frame_left',frame_left)
+
+	if cv2.waitKey(33)== 27:
+		break
+
+
+# Clean up everything before leaving
+cv2.destroyAllWindows()
+cap.release()
+
+
+
